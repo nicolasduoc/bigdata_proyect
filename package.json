@@ -1,0 +1,21 @@
+{
+  "name": "api_mobile",
+  "version": "1.0.0",
+  "description": "api para conectar app movil con BD mysql",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "knex": "^3.1.0",
+    "mysql": "^2.18.1",
+    "random-int": "^3.0.0",
+    "uuid": "^9.0.1",
+    "uuid-int": "^3.1.0"
+  }
+}
