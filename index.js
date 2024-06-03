@@ -12,6 +12,8 @@ const dbService = databaseService();
 
 require('./routes')(app,dbService);
 
+
+
 app.listen(3000, function () {
     console.log('App listening on port 3000!');
 });

@@ -10,14 +10,14 @@ const databaseService = () => {
         client: 'mysql',
         connection: {
             host: process.env.DB_HOST,
-            port: 3306,
+            port: process.env.DB_PORT,
             user: process.env.DB_USER,
             password: process.env.DB_PASS,
             database: process.env.DB,
         }
     });
 
-    const table = 'location';
+    const table = 'Location';
 
     const getLocations = async () => {
         try {
@@ -28,7 +28,7 @@ const databaseService = () => {
         }
     };
     
-    const crearLocation = async (disp_ID, lat, lon) => {
+    const crearLocation = async (lat, lon) => {
         try {
             return await knex(table).insert({
                 disp_ID: generator.uuid(),
