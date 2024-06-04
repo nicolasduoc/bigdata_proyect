@@ -32,7 +32,7 @@ module.exports = function (app, databaseService) {
 
   //create
   app.post("/createlocations", (req, res) => {
-    const newLocation = req.body;
+    const newLocation = req.body; //cuerpo de la peticion (json)
     console.log(newLocation);
     databaseService
       .crearLocation(newLocation.disp_ID, newLocation.lat, newLocation.lon)
