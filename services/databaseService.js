@@ -17,7 +17,7 @@ const databaseService = () => {
         }
     });
 
-    const table = 'Location';
+    const table = 'location';
 
     const getLocations = async () => {
         try {
@@ -28,10 +28,12 @@ const databaseService = () => {
         }
     };
     
-    const crearLocation = async (lat, lon) => {
+    const crearLocation = async (id_disp, lat, lon) => {
         try {
             return await knex(table).insert({
-                disp_ID: generator.uuid(),
+                ID : null,
+                disp_ID: id_disp,
+                fecha : current_timestamp(),
                 lat: lat,
                 lon: lon
             });

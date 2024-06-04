@@ -11,22 +11,41 @@ module.exports = function (app, databaseService) {
       });
   });
 
+  //read 1
+
+  app.get("/locations/:id", (req, res) => {
+    const id = req.params.id;
+    databaseService
+      .getLocations()
+      .then((locations) => {
+        const location = locations.find((location) => location.id === id);
+        if (location) {
+          res.json(location);
+        } else {
+          res.json({ message: "Location not found" });
+        }
+      })
+      .catch((error) => {
+        res.json({ message: "Error getting location", error });
+      });
+  });
+
   //create
-  app.post("/locations", (req, res) => {
+  app.post("/createlocations", (req, res) => {
     const newLocation = req.body;
     console.log(newLocation);
     databaseService
       .crearLocation(newLocation.disp_ID, newLocation.lat, newLocation.lon)
       .then(() => {
-        res.json({ message: "Location created" });
+        res.json({ message: "Location creada" });
       })
       .catch((error) => {
-        res.json({ message: "Error creating location 2", error });
+        res.json({ message: "Error creando location", error });
       });
   });
 
   //update
-  app.put("/locations/:id", (req, res) => {
+  app.put("/updatelocations/:id", (req, res) => {
     const id = req.params.id;
     console.log(id);
     const location = req.body;
@@ -42,7 +61,7 @@ module.exports = function (app, databaseService) {
   });
 
   //delete
-  app.delete("/locations/:id", (req, res) => {
+  app.delete("/deletelocations/:id", (req, res) => {
     const id = req.params.id;
     databaseService
       .deleteLocation(id)
